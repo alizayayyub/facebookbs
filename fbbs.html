@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Facebook - Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            color: #1c1e21;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .topbar {
+            height: 64px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            background: #1877f2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            width: 240px;
+            background: #f0f2f5;
+            border-radius: 25px;
+            padding: 10px 16px;
+            color: #65676b;
+            font-size: 14px;
+        }
+
+        .top-icon {
+            width: 42px;
+            height: 42px;
+            background: #f0f2f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .top-icon:hover {
+            background: #e4e6eb;
+        }
+
+        /* ================= SIDEBARS ================= */
+
+        .sidebar {
+            position: sticky;
+            top: 85px;
+            height: fit-content;
+        }
+
+        .profile-box,
+        .menu,
+        .custom-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .profile-box {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1877f2, #6c5ce7);
+            color: white;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .profile-box h3 {
+            font-size: 17px;
+        }
+
+        .profile-box p {
+            color: #65676b;
+            font-size: 13px;
+        }
+
+        /* ================= MENU ================= */
+
+        .menu-item {
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .menu-item:hover {
+            background: #f0f2f5;
+        }
+
+        .menu-item.active {
+            background: #e7f3ff;
+            color: #1877f2;
+            font-weight: bold;
+        }
+
+        .menu-icon {
+            font-size: 19px;
+        }
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            background: linear-gradient(135deg, #1877f2, #6c5ce7, #9b59b6);
+            color: white;
+            border-radius: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(24,119,242,0.20);
+        }
+
+        .welcome h1 {
+            font-size: 25px;
+        }
+
+        .welcome p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .welcome-circle {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border: 25px solid rgba(255,255,255,0.10);
+            border-radius: 50%;
+            right: 40px;
+            top: -45px;
+        }
+
+        /* ================= STORIES ================= */
+
+        .section-title {
+            font-size: 18px;
+        }
+
+        .story {
+            height: 150px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(160deg, #1877f2, #6c5ce7);
+            transition: 0.3s;
+        }
+
+        .story:hover {
+            transform: translateY(-4px);
+        }
+
+        .story:nth-child(2) {
+            background: linear-gradient(160deg, #ff7675, #d63031);
+        }
+
+        .story:nth-child(3) {
+            background: linear-gradient(160deg, #00b894, #0984e3);
+        }
+
+        .story:nth-child(4) {
+            background: linear-gradient(160deg, #fdcb6e, #e17055);
+        }
+
+        .story:nth-child(5) {
+            background: linear-gradient(160deg, #a29bfe, #6c5ce7);
+        }
+
+        .story-avatar {
+            width: 38px;
+            height: 38px;
+            background: white;
+            color: #1877f2;
+            border-radius: 50%;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 3px solid #1877f2;
+        }
+
+        .story-name {
+            position: absolute;
+            bottom: 10px;
+            left: 11px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .add-story {
+            background: white !important;
+            color: #1c1e21;
+        }
+
+        .add-story .story-avatar {
+            background: #e7f3ff;
+            border: none;
+            color: #1877f2;
+            font-size: 22px;
+        }
+
+        /* ================= POST ================= */
+
+        .small-avatar {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #1877f2, #6c5ce7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .post-input {
+            flex: 1;
+            background: #f0f2f5;
+            border-radius: 25px;
+            padding: 13px 17px;
+            color: #65676b;
+            cursor: pointer;
+        }
+
+        .post-input:hover {
+            background: #e4e6eb;
+        }
+
+        .post-action {
+            padding: 8px 15px;
+            border-radius: 10px;
+            color: #65676b;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .post-action:hover {
+            background: #f0f2f5;
+        }
+
+        .user-info h4 {
+            font-size: 14px;
+        }
+
+        .user-info p {
+            color: #65676b;
+            font-size: 12px;
+        }
+
+        .more {
+            font-size: 20px;
+            color: #65676b;
+            cursor: pointer;
+        }
+
+        .post-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .tag {
+            color: #1877f2;
+            font-weight: bold;
+        }
+
+        .post-image {
+            height: 230px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        .post-image.second {
+            background: linear-gradient(135deg, #00b894, #0984e3);
+        }
+
+        .post-buttons span {
+            padding: 8px 20px;
+            border-radius: 10px;
+            color: #65676b;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .post-buttons span:hover {
+            background: #f0f2f5;
+        }
+
+        /* ================= RIGHT SIDEBAR ================= */
+
+        .rightbar {
+            position: sticky;
+            top: 85px;
+            height: fit-content;
+        }
+
+        .right-title h3 {
+            font-size: 16px;
+        }
+
+        .right-title a {
+            color: #1877f2;
+            font-size: 12px;
+        }
+
+        .contact-pic {
+            width: 38px;
+            height: 38px;
+            background: #dfe6e9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .online {
+            width: 10px;
+            height: 10px;
+            background: #31a24c;
+            border-radius: 50%;
+            border: 2px solid white;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .contact span {
+            font-size: 13px;
+        }
+
+        .event {
+            background: #f7f8fa;
+            border-radius: 13px;
+        }
+
+        .event-date {
+            color: #1877f2;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .event h4 {
+            font-size: 13px;
+        }
+
+        .event p {
+            font-size: 11px;
+            color: #65676b;
+        }
+
+        .trend {
+            padding: 9px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trend:last-child {
+            border-bottom: none;
+        }
+
+        .trend small {
+            color: #65676b;
+            font-size: 10px;
+        }
+
+        .trend p {
+            color: #1877f2;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .footer {
+            color: #65676b;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .rightbar {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .search-box {
+                width: 150px;
+            }
+
+            .story {
+                height: 140px;
+            }
+
+        }
+
+        @media (max-width: 576px) {
+
+            .search-box {
+                display: none;
+            }
+
+            .top-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .welcome h1 {
+                font-size: 20px;
+            }
+
+            .story {
+                height: 125px;
+            }
+
+            .post-image {
+                height: 180px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="topbar d-flex align-items-center justify-content-between px-3 px-md-4">
+
+    <div class="d-flex align-items-center gap-2">
+
+        <div class="logo">
+            f
+        </div>
+
+        <div class="search-box">
+            🔍 &nbsp; Search Facebook
+        </div>
+
+    </div>
+
+
+    <div class="d-flex align-items-center gap-2">
+
+        <div class="top-icon">
+            🏠
+        </div>
+
+        <div class="top-icon">
+            🎬
+        </div>
+
+        <div class="top-icon">
+            👥
+        </div>
+
+        <div class="top-icon">
+            🔔
+        </div>
+
+        <div class="top-icon">
+            💬
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container-fluid py-4">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+
+            <!-- ================= LEFT SIDEBAR ================= -->
+
+            <aside class="col-lg-3 col-xl-2 sidebar">
+
+                <div class="profile-box p-3 mb-3">
+
+                    <div class="profile-pic">
+                        A
+                    </div>
+
+                    <h3 class="mt-2 mb-1">
+                        Alizay Ayyub
+                    </h3>
+
+                    <p class="mb-0">
+                        Computer Science Student
+                    </p>
+
+                </div>
+
+
+                <div class="menu p-2">
+
+                    <div class="menu-item active">
+                        <span class="menu-icon">🏠</span>
+                        Home
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">👤</span>
+                        Friends
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">👥</span>
+                        Groups
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">🎬</span>
+                        Watch
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">🛒</span>
+                        Marketplace
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">📅</span>
+                        Events
+                    </div>
+
+                    <div class="menu-item">
+                        <span class="menu-icon">🔖</span>
+                        Saved
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ================= CENTER ================= -->
+
+            <main class="col-12 col-lg-9 col-xl-7">
+
+
+                <!-- WELCOME -->
+
+                <div class="welcome p-4 mb-4">
+
+                    <div class="welcome-circle"></div>
+
+                    <h1 class="mb-2">
+                        Welcome back, Alizay 👋
+                    </h1>
+
+                    <p class="mb-0">
+                        Stay connected with friends, discover new stories
+                        and see what's happening around you.
+                    </p>
+
+                </div>
+
+
+                <!-- STORIES -->
+
+                <h2 class="section-title mb-3">
+                    Stories
+                </h2>
+
+
+                <div class="row row-cols-3 row-cols-md-5 g-2 mb-4">
+
+                    <div class="col">
+
+                        <div class="story add-story">
+
+                            <div class="story-avatar">
+                                +
+                            </div>
+
+                            <div class="story-name">
+                                Create Story
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="story">
+
+                            <div class="story-avatar">
+                                S
+                            </div>
+
+                            <div class="story-name">
+                                Sarah
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="story">
+
+                            <div class="story-avatar">
+                                M
+                            </div>
+
+                            <div class="story-name">
+                                Maham
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="story">
+
+                            <div class="story-avatar">
+                                H
+                            </div>
+
+                            <div class="story-name">
+                                Hamza
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="story">
+
+                            <div class="story-avatar">
+                                A
+                            </div>
+
+                            <div class="story-name">
+                                Ahmed
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CREATE POST -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <div class="small-avatar">
+                            A
+                        </div>
+
+                        <div class="post-input">
+                            What's on your mind, Alizay?
+                        </div>
+
+                    </div>
+
+
+                    <div class="border-top mt-3 pt-2">
+
+                        <div class="d-flex justify-content-around flex-wrap">
+
+                            <div class="post-action">
+                                🎥 Live Video
+                            </div>
+
+                            <div class="post-action">
+                                🖼️ Photo/Video
+                            </div>
+
+                            <div class="post-action">
+                                😊 Feeling
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= FIRST POST ================= -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div class="small-avatar">
+                                S
+                            </div>
+
+                            <div class="user-info">
+
+                                <h4 class="mb-1">
+                                    Sarah Khan
+                                </h4>
+
+                                <p class="mb-0">
+                                    2 hours ago · 🌎
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="more">
+                            ⋯
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-text my-3">
+
+                        Had a really productive study session today!
+                        Finally finished my Operating Systems assignment.
+                        Who else is preparing for the upcoming quiz? 📚
+
+                        <br><br>
+
+                        <span class="tag">
+                            #StudyTime
+                        </span>
+
+                        <span class="tag">
+                            #UniversityLife
+                        </span>
+
+                    </div>
+
+
+                    <div class="post-image mb-2">
+                        📚
+                    </div>
+
+
+                    <div class="d-flex justify-content-between text-secondary small py-2">
+
+                        <span>
+                            👍 ❤️ 😂 &nbsp; 128
+                        </span>
+
+                        <span>
+                            24 Comments · 8 Shares
+                        </span>
+
+                    </div>
+
+
+                    <div class="border-top pt-2">
+
+                        <div class="d-flex justify-content-around post-buttons">
+
+                            <span>
+                                👍 Like
+                            </span>
+
+                            <span>
+                                💬 Comment
+                            </span>
+
+                            <span>
+                                ↗ Share
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SECOND POST ================= -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="d-flex align-items-center gap-2">
+
+                            <div class="small-avatar">
+                                M
+                            </div>
+
+                            <div class="user-info">
+
+                                <h4 class="mb-1">
+                                    Maham Ali
+                                </h4>
+
+                                <p class="mb-0">
+                                    5 hours ago · 🌎
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="more">
+                            ⋯
+                        </div>
+
+                    </div>
+
+
+                    <div class="post-text my-3">
+
+                        Our university tech society is organizing a
+                        web development workshop this Friday! 💻
+
+                        Anyone interested in joining?
+
+                        <br><br>
+
+                        <span class="tag">
+                            #WebDevelopment
+                        </span>
+
+                        <span class="tag">
+                            #TechSociety
+                        </span>
+
+                    </div>
+
+
+                    <div class="post-image second mb-2">
+                        💻
+                    </div>
+
+
+                    <div class="d-flex justify-content-between text-secondary small py-2">
+
+                        <span>
+                            👍 ❤️ &nbsp; 96
+                        </span>
+
+                        <span>
+                            18 Comments · 5 Shares
+                        </span>
+
+                    </div>
+
+
+                    <div class="border-top pt-2">
+
+                        <div class="d-flex justify-content-around post-buttons">
+
+                            <span>
+                                👍 Like
+                            </span>
+
+                            <span>
+                                💬 Comment
+                            </span>
+
+                            <span>
+                                ↗ Share
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </main>
+
+
+            <!-- ================= RIGHT SIDEBAR ================= -->
+
+            <aside class="col-xl-3 rightbar">
+
+
+                <!-- CONTACTS -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="right-title d-flex justify-content-between align-items-center mb-3">
+
+                        <h3 class="mb-0">
+                            Contacts
+                        </h3>
+
+                        <a href="#" class="text-decoration-none">
+                            See All
+                        </a>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-2 py-2">
+
+                        <div class="contact-pic">
+                            S
+                            <div class="online"></div>
+                        </div>
+
+                        <span>
+                            Sarah Khan
+                        </span>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-2 py-2">
+
+                        <div class="contact-pic">
+                            M
+                            <div class="online"></div>
+                        </div>
+
+                        <span>
+                            Maham Ali
+                        </span>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-2 py-2">
+
+                        <div class="contact-pic">
+                            H
+                            <div class="online"></div>
+                        </div>
+
+                        <span>
+                            Hamza Ahmed
+                        </span>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-2 py-2">
+
+                        <div class="contact-pic">
+                            A
+                        </div>
+
+                        <span>
+                            Ahmed Raza
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENTS -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="right-title d-flex justify-content-between align-items-center mb-3">
+
+                        <h3 class="mb-0">
+                            Upcoming Events
+                        </h3>
+
+                        <a href="#" class="text-decoration-none">
+                            See All
+                        </a>
+
+                    </div>
+
+
+                    <div class="event p-3 mb-2">
+
+                        <div class="event-date">
+                            SEP 25
+                        </div>
+
+                        <h4 class="my-1">
+                            Web Development Workshop
+                        </h4>
+
+                        <p class="mb-0">
+                            📍 Computer Lab · 4:00 PM
+                        </p>
+
+                    </div>
+
+
+                    <div class="event p-3 mb-2">
+
+                        <div class="event-date">
+                            SEP 28
+                        </div>
+
+                        <h4 class="my-1">
+                            University Tech Fest
+                        </h4>
+
+                        <p class="mb-0">
+                            📍 Main Auditorium · 10:00 AM
+                        </p>
+
+                    </div>
+
+
+                    <div class="event p-3">
+
+                        <div class="event-date">
+                            OCT 02
+                        </div>
+
+                        <h4 class="my-1">
+                            Programming Competition
+                        </h4>
+
+                        <p class="mb-0">
+                            📍 CS Department · 2:00 PM
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRENDING -->
+
+                <div class="custom-card p-3 mb-3">
+
+                    <div class="right-title mb-2">
+
+                        <h3 class="mb-0">
+                            🔥 Trending Now
+                        </h3>
+
+                    </div>
+
+
+                    <div class="trend">
+
+                        <small>
+                            Trending in University
+                        </small>
+
+                        <p class="mb-0">
+                            #TechFest2026
+                        </p>
+
+                    </div>
+
+
+                    <div class="trend">
+
+                        <small>
+                            Popular today
+                        </small>
+
+                        <p class="mb-0">
+                            #OperatingSystems
+                        </p>
+
+                    </div>
+
+
+                    <div class="trend">
+
+                        <small>
+                            Student community
+                        </small>
+
+                        <p class="mb-0">
+                            #StudyGroups
+                        </p>
+
+                    </div>
+
+
+                    <div class="trend">
+
+                        <small>
+                            Technology
+                        </small>
+
+                        <p class="mb-0">
+                            #WebDevelopment
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="footer">
+
+                    Privacy · Terms · Advertising · Cookies · More
+
+                    <br>
+
+                    © 2026 Facebook UI 
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
